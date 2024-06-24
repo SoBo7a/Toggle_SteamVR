@@ -62,4 +62,4 @@ The badge VR icon used in this project is from [Icon-icons.com](https://icon-ico
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/SoBo7a/Toggle_SteamVR/blob/master/LICENSE.txt) file for details.
