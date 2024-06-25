@@ -57,7 +57,7 @@ Contributions are welcome! Feel free to fork the repository, make changes, and s
 
 ## Attribution
 
-The badge VR icon used in this project is from [Icon-icons.com](https://icon-icons.com/icon/badge-vr/185339), and is used under the MIT License.
+The badge VR icon used in this project is from [icon-icons.com](https://icon-icons.com/icon/badge-vr/185339), and is used under the MIT License.
 
 
 ## License

@@ -20,11 +20,11 @@ namespace Toggle_SteamVR
         {
             // Load icons from embedded resources
             var assembly = Assembly.GetExecutingAssembly();
-            using (var stream = assembly.GetManifestResourceStream("Toggle_SteamVR.steamvr_enabled.ico"))
+            using (var stream = assembly.GetManifestResourceStream("Toggle_SteamVR.Assets.steamvr_enabled.ico"))
             {
                 enabledIcon = new Icon(stream);
             }
-            using (var stream = assembly.GetManifestResourceStream("Toggle_SteamVR.steamvr_disabled.ico"))
+            using (var stream = assembly.GetManifestResourceStream("Toggle_SteamVR.Assets.steamvr_disabled.ico"))
             {
                 disabledIcon = new Icon(stream);
             }
