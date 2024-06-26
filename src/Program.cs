@@ -1,4 +1,4 @@
-namespace Toggle_SteamVR
+namespace Toggle_SteamVR.src
 {
     internal static class Program
     {
