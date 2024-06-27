@@ -14,14 +14,14 @@
     <framework targetVersion="4.5" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="Application Files\Toggle_SteamVR_1_0_0_0\Toggle_SteamVR.dll.manifest" size="6121">
+    <dependentAssembly dependencyType="install" codebase="Application Files\Toggle_SteamVR_1_0_0_0\Toggle_SteamVR.dll.manifest" size="6486">
       <assemblyIdentity name="Toggle_SteamVR.exe" version="1.0.0.0" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>n5mila1fKz9/fcNoY3BmNxjeg47l8/h4KfxWDLMB3w8=</dsig:DigestValue>
+        <dsig:DigestValue>PW1kVdFu/RRBASgj3qGL0FYgBYM9RbDJx/CAFVgH5UU=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

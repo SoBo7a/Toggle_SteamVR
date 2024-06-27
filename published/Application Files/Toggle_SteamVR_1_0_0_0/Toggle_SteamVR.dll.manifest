@@ -72,7 +72,7 @@
       <dsig:DigestValue>a2HfdRevGiPe0XrAhcvlgDlsss7Hxe/4AA9S4DKUyw8=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="config.xml" size="174" writeableType="applicationData">
+  <file name="config.xml" size="174">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
@@ -90,22 +90,31 @@
       <dsig:DigestValue>jH0xuELFBuymJGC86FTeF1ltD1OH9YNwUVFu5w/qzDs=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Toggle_SteamVR.dll" size="146944">
+  <file name="Toggle_SteamVR.dll" size="146432">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>mpDAwBUDotLmVYzWXMIRRetj56wXj73fdfct5OARXVw=</dsig:DigestValue>
+      <dsig:DigestValue>LQJFY8ikdJOMrZ8KcPFk5JFHb3pj01cdR3QLsaFEg80=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Toggle_SteamVR.exe" size="216064">
+  <file name="Toggle_SteamVR.exe" size="215552">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>crheGhrjG2HqLiOyz+qZcztr/MxJhfCbW4q6nl9rws4=</dsig:DigestValue>
+      <dsig:DigestValue>Q9sHxbDc1ZjCPd977ZXLa5+W3aiBDYK6uuvuXJHXqvc=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Toggle_SteamVR.pdb" size="13584">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>kwHULpjPhLU/LD8xACyQP+NM17wIiMgdnoaK+MgepdI=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Toggle_SteamVR.runtimeconfig.json" size="372">
