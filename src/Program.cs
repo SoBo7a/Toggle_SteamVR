@@ -10,25 +10,16 @@ namespace Toggle_SteamVR.src
         [STAThread]
         static async Task Main()
         {
-            const string releasesUrl = @"https://raw.githubusercontent.com/SoBo7a/Toggle_SteamVR/development/Releases/";
+            // Initialize Squirrel update manager with your GitHub releases URL
+            // const string releasesUrl = "https://raw.githubusercontent.com/SoBo7a/Toggle_SteamVR/development/Releases/";
+            // using (var mgr = new UpdateManager(releasesUrl))
+            // {
+            // Check for updates
+            // await mgr.UpdateApp();             
+            // }
 
-            try
-            {
-                using (var mgr = new UpdateManager(releasesUrl))
-                {
-                    await mgr.UpdateApp();
-
-                    ApplicationConfiguration.Initialize();
-                    Application.Run(new Form1());
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Failed to check for updates: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                // Continue starting the application even if update check fails
-                ApplicationConfiguration.Initialize();
-                Application.Run(new Form1());
-            }
+            ApplicationConfiguration.Initialize();
+            Application.Run(new Form1());
         }
     }
 }
