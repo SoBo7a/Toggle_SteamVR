@@ -1,17 +1,26 @@
+using Squirrel;
+using System;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
 namespace Toggle_SteamVR.src
 {
     internal static class Program
     {
-        /// <summary>
-        ///  The main entry point for the application.
-        /// </summary>
         [STAThread]
-        static void Main()
+        static async Task Main()
         {
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
-            ApplicationConfiguration.Initialize();
-            Application.Run(new Form1());
+            // Initialize Squirrel update manager with your GitHub releases URL
+            const string releasesUrl = "https://raw.githubusercontent.com/SoBo7a/Toggle_SteamVR/development/Releases/";
+            using (var mgr = new UpdateManager(releasesUrl))
+            {
+                // Check for updates
+                await mgr.UpdateApp();
+
+                // Continue with your application startup
+                ApplicationConfiguration.Initialize();
+                Application.Run(new Form1());
+            }
         }
     }
 }
