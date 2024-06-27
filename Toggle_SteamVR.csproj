@@ -1,12 +1,25 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+	<AssemblyVersion>1.0.0</AssemblyVersion>  
+    <FileVersion>1.0.0</FileVersion>  
+    <Authors>SoBo7a</Authors>  
     <OutputType>WinExe</OutputType>
     <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
     <ApplicationIcon>Assets\steamvr_enabled.ico</ApplicationIcon>
+    <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+    <Title>Toggle SteamVR</Title>
+    <PackageProjectUrl>https://github.com/SoBo7a/Toggle_SteamVR</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/SoBo7a/Toggle_SteamVR</RepositoryUrl>
+    <PackageTags>steamvr; vr; steam</PackageTags>
+    <Description>App to enable/disable SteamVR</Description>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryType>git</RepositoryType>
+    <PackageReleaseNotes>initial release</PackageReleaseNotes>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -30,10 +43,21 @@
   <ItemGroup>
     <None Update="LICENSE.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
     </None>
     <None Update="README.md">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
     </None>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="lib\net45\" />
+  </ItemGroup>
+
+  <ItemGroup>
+	<PackageReference Include="Squirrel.Windows" Version="2.0.1" />
+  </ItemGroup>
 </Project>
