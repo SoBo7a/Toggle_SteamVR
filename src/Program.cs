@@ -10,7 +10,7 @@ namespace Toggle_SteamVR.src
         [STAThread]
         static async Task Main()
         {
-            const string releasesUrl = "https://raw.githubusercontent.com/SoBo7a/Toggle_SteamVR/development/Releases/";
+            const string releasesUrl = @"https://raw.githubusercontent.com/SoBo7a/Toggle_SteamVR/development/Releases/";
 
             try
             {
