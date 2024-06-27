@@ -96,7 +96,7 @@ namespace Toggle_SteamVR
                     if (Directory.Exists(disabledSteamVRPath))
                     {
                         Directory.Move(disabledSteamVRPath, steamVRPath);
-                        notifyIcon1.ShowBalloonTip(500, "SteamVR Enabled", "SteamVR has been enabled.", ToolTipIcon.Info);
+                        notifyIcon1.ShowBalloonTip(500, "SteamVR Enabled - Test", "SteamVR has been enabled.", ToolTipIcon.Info);
                         notifyIcon1.Icon = enabledIcon;
                         UpdateMenuItems();
                     }
@@ -110,7 +110,7 @@ namespace Toggle_SteamVR
                     if (Directory.Exists(steamVRPath))
                     {
                         Directory.Move(steamVRPath, disabledSteamVRPath);
-                        notifyIcon1.ShowBalloonTip(500, "SteamVR Disabled", "SteamVR has been disabled.", ToolTipIcon.Info);
+                        notifyIcon1.ShowBalloonTip(500, "SteamVR Disabled - Test", "SteamVR has been disabled.", ToolTipIcon.Info);
                         notifyIcon1.Icon = disabledIcon;
                         UpdateMenuItems();
                     }
