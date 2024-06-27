@@ -32,12 +32,15 @@
     <Content Include="config.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\steamvr_enabled.ico" />
+    <Content Include="Assets\steamvr_enabled.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Assets\steamvr_disabled.ico" />
-    <EmbeddedResource Include="Assets\steamvr_enabled.ico" />
+    <Content Include="Assets\steamvr_disabled.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
@@ -51,13 +54,5 @@
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="lib\net45\" />
-  </ItemGroup>
-
-  <ItemGroup>
-	<PackageReference Include="Squirrel.Windows" Version="2.0.1" />
   </ItemGroup>
 </Project>
