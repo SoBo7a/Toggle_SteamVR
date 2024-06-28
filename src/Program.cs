@@ -40,8 +40,9 @@ namespace Toggle_SteamVR.src
             using (StreamWriter writer = new StreamWriter(batchFilePath))
             {
                 writer.WriteLine("@echo off");
-                writer.WriteLine("timeout /t 3 /nobreak > nul");
+                writer.WriteLine("timeout /t 0.5 /nobreak > nul");
                 writer.WriteLine("taskkill /f /im Toggle_SteamVR.exe");
+                writer.WriteLine("timeout /t 0.5 /nobreak > nul");
                 writer.WriteLine($"start \"\" \"{newExecutablePath}\"");
             }
 
@@ -51,9 +52,6 @@ namespace Toggle_SteamVR.src
                 UseShellExecute = false,
                 CreateNoWindow = true
             });
-
-            // Exit the current process
-            Application.Exit();
         }
     }
 }
