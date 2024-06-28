@@ -35,11 +35,25 @@ namespace Toggle_SteamVR.src
             string currentDirectory = Path.GetDirectoryName(currentExecutablePath);
             string newExecutablePath = Path.Combine(currentDirectory, $"app-{newVersion}", "Toggle_SteamVR.exe");
 
-            // Kill the current process
-            Process.GetCurrentProcess().Kill();
+            string batchFilePath = Path.Combine(Path.GetTempPath(), "restart.bat");
 
-            // Start the new process
-            Process.Start(newExecutablePath);
+            using (StreamWriter writer = new StreamWriter(batchFilePath))
+            {
+                writer.WriteLine("@echo off");
+                writer.WriteLine("timeout /t 3 /nobreak > nul");
+                writer.WriteLine("taskkill /f /im Toggle_SteamVR.exe");
+                writer.WriteLine($"start \"\" \"{newExecutablePath}\"");
+            }
+
+            Process.Start(new ProcessStartInfo()
+            {
+                FileName = batchFilePath,
+                UseShellExecute = false,
+                CreateNoWindow = true
+            });
+
+            // Exit the current process
+            Application.Exit();
         }
     }
 }
