@@ -78,7 +78,7 @@ namespace Toggle_SteamVR
 
         private async void checkForUpdatesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            await Updater.CheckAndUpdate();
+            await Updater.CheckAndUpdate(true);
         }
 
         private void enableMenuItem_Click(object sender, EventArgs e)
@@ -102,7 +102,7 @@ namespace Toggle_SteamVR
                     if (Directory.Exists(disabledSteamVRPath))
                     {
                         Directory.Move(disabledSteamVRPath, steamVRPath);
-                        notifyIcon1.ShowBalloonTip(500, "SteamVR Enabled", "SteamVR has been enabled.", ToolTipIcon.Info);
+                        notifyIcon1.ShowBalloonTip(500, "SteamVR Enabled - Test", "SteamVR has been enabled.", ToolTipIcon.Info);
                         notifyIcon1.Icon = enabledIcon;
                         UpdateMenuItems();
                     }
@@ -116,7 +116,7 @@ namespace Toggle_SteamVR
                     if (Directory.Exists(steamVRPath))
                     {
                         Directory.Move(steamVRPath, disabledSteamVRPath);
-                        notifyIcon1.ShowBalloonTip(500, "SteamVR Disabled", "SteamVR has been disabled.", ToolTipIcon.Info);
+                        notifyIcon1.ShowBalloonTip(500, "SteamVR Disabled - Test", "SteamVR has been disabled.", ToolTipIcon.Info);
                         notifyIcon1.Icon = disabledIcon;
                         UpdateMenuItems();
                     }
