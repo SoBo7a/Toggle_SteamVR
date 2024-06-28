@@ -16,15 +16,13 @@ namespace Toggle_SteamVR.src
             {
                 // Check for updates
                 var releaseEntry = await mgr.UpdateApp();
-                MessageBox.Show("Checking for updateZZZ..." + releaseEntry, "Update Check", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Checking for updateZZZ... " + releaseEntry.Version, "Update Check", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
 
                 if (releaseEntry != null)
                 {
                     //restart app if an update was installed
-                    MessageBox.Show("Updated, please restart the app...", "Update Check", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    // UpdateManager.RestartApp();
-                    return;
+                    MessageBox.Show("Updated to v" + releaseEntry.Version + ", please restart the app...", "Update Check", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }            
             }                       
 
