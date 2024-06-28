@@ -16,7 +16,7 @@ namespace Toggle_SteamVR.src
             {
                 // Check for updates
                 var releaseEntry = await mgr.UpdateApp();
-                MessageBox.Show("Checking for updatesZZZ..." + releaseEntry, "Update Check", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Checking for updates..." + releaseEntry, "Update Check", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
 
                 if (releaseEntry != null)
