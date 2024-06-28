@@ -4,13 +4,13 @@ using Toggle_SteamVR.src;
 
 namespace Toggle_SteamVR
 {
-    public partial class Form1 : Form
+    public partial class NotificationForm : Form
     {
         private Icon enabledIcon;
         private Icon disabledIcon;
         private string steamVRPath;
 
-        public Form1()
+        public NotificationForm()
         {
             InitializeComponent();
             LoadIcons();

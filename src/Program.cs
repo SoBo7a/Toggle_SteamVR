@@ -12,7 +12,7 @@ namespace Toggle_SteamVR.src
             await Updater.CheckAndUpdate();
 
             ApplicationConfiguration.Initialize();
-            Application.Run(new Form1());
+            Application.Run(new NotificationForm());
         }
     }
 }
