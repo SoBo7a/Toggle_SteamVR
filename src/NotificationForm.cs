@@ -35,8 +35,10 @@ namespace Toggle_SteamVR
         {
             try
             {
+                string configFilePath = Path.Combine(Application.StartupPath, "config.xml");
+
                 // Load configuration file
-                XDocument doc = XDocument.Load("config.xml");
+                XDocument doc = XDocument.Load(configFilePath);
                 XElement steamVRConfig = doc.Element("config")?.Element("steamVR");
                 if (steamVRConfig != null)
                 {
@@ -54,6 +56,7 @@ namespace Toggle_SteamVR
                 Close(); // Close the application if the path is not found
             }
         }
+
 
         private void Form1_Load(object sender, EventArgs e)
         {
