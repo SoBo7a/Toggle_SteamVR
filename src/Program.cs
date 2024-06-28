@@ -33,7 +33,7 @@ namespace Toggle_SteamVR.src
         {
             string currentExecutablePath = Application.ExecutablePath;
             string currentDirectory = Path.GetDirectoryName(currentExecutablePath);
-            string newExecutablePath = Path.Combine(currentDirectory, $"app-{newVersion}", "Toggle_SteamVR.exe");
+            string newExecutablePath = Path.Combine(currentDirectory, "..", $"app-{newVersion}", "Toggle_SteamVR.exe");
 
             string batchFilePath = Path.Combine(Path.GetTempPath(), "restart.bat");
 
