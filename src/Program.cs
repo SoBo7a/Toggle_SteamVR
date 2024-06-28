@@ -10,20 +10,26 @@ namespace Toggle_SteamVR.src
         [STAThread]
         static async Task Main()
         {
-            // Initialize Squirrel update manager with your GitHub releases URL
-            const string releasesUrl = "https://raw.githubusercontent.com/SoBo7a/Toggle_SteamVR/development/Releases/";
-            using (var mgr = new UpdateManager(releasesUrl))
+            // Check if the application is running on the first install or is being updated
+            using (var updateManager = await UpdateManager.GitHubUpdateManager("https://raw.githubusercontent.com/SoBo7a/Toggle_SteamVR/development/Releases/"))
             {
-                // Check for updates
-                var releaseEntry = await mgr.UpdateApp();
+                SquirrelAwareApp.HandleEvents(
+                    onInitialInstall: v => updateManager.CreateShortcutForThisExe(),
+                    onAppUpdate: v => updateManager.CreateShortcutForThisExe(),
+                    onAppUninstall: v => updateManager.RemoveShortcutForThisExe(),
+                    onFirstRun: () => MessageBox.Show("Thanks for installing Toggle SteamVR!"));
 
-                if (releaseEntry != null)
+                // Check for updates
+                var updateResult = await updateManager.UpdateApp();
+
+                // If an update was installed, restart the app
+                if (updateResult != null)
                 {
-                    //restart app if an update was installed
                     UpdateManager.RestartApp();
-                }            
+                }
             }
 
+            // Continue with your application startup
             ApplicationConfiguration.Initialize();
             Application.Run(new Form1());
         }
