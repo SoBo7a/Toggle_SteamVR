@@ -22,11 +22,11 @@ namespace Toggle_SteamVR.src
                 if (releaseEntry != null)
                 {
                     //restart app if an update was installed
-                    UpdateManager.RestartApp();
-                    MessageBox.Show("Updated, restarting...", "Update Check", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Updated, please restart the app...", "Update Check", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    // UpdateManager.RestartApp();
                     return;
                 }            
-            }
+            }                       
 
             ApplicationConfiguration.Initialize();
             Application.Run(new Form1());
