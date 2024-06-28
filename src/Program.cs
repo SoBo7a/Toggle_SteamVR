@@ -11,12 +11,12 @@ namespace Toggle_SteamVR.src
         static async Task Main()
         {
             // Initialize Squirrel update manager with your GitHub releases URL
-            // const string releasesUrl = "https://raw.githubusercontent.com/SoBo7a/Toggle_SteamVR/development/Releases/";
-            // using (var mgr = new UpdateManager(releasesUrl))
-            // {
+            const string releasesUrl = "https://raw.githubusercontent.com/SoBo7a/Toggle_SteamVR/development/Releases/";
+            using (var mgr = new UpdateManager(releasesUrl))
+            {
             // Check for updates
-            // await mgr.UpdateApp();             
-            // }
+            await mgr.UpdateApp();             
+            }
 
             ApplicationConfiguration.Initialize();
             Application.Run(new Form1());
