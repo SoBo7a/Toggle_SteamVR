@@ -10,26 +10,44 @@ namespace Toggle_SteamVR.src
         [STAThread]
         static async Task Main()
         {
-            // Check if the application is running on the first install or is being updated
-            using (var updateManager = await UpdateManager.GitHubUpdateManager("https://raw.githubusercontent.com/SoBo7a/Toggle_SteamVR/development/Releases/"))
+            const string releasesUrl = "https://raw.githubusercontent.com/SoBo7a/Toggle_SteamVR/development/Releases/";
+
+            try
             {
-                SquirrelAwareApp.HandleEvents(
-                    onInitialInstall: v => updateManager.CreateShortcutForThisExe(),
-                    onAppUpdate: v => updateManager.CreateShortcutForThisExe(),
-                    onAppUninstall: v => updateManager.RemoveShortcutForThisExe(),
-                    onFirstRun: () => MessageBox.Show("Thanks for installing Toggle SteamVR!"));
+                MessageBox.Show("Starting update check...", "Update Check", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                // Check for updates
-                var updateResult = await updateManager.UpdateApp();
-
-                // If an update was installed, restart the app
-                if (updateResult != null)
+                using (var mgr = new UpdateManager(releasesUrl))
                 {
-                    UpdateManager.RestartApp();
+                    // Check for updates
+                    MessageBox.Show("Checking for updates...", "Update Check", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    var updateInfo = await mgr.CheckForUpdate();
+
+                    if (updateInfo.ReleasesToApply.Count > 0)
+                    {
+                        MessageBox.Show($"Found {updateInfo.ReleasesToApply.Count} updates. Applying updates...", "Update Found", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        var releaseEntry = await mgr.UpdateApp();
+
+                        if (releaseEntry != null)
+                        {
+                            MessageBox.Show("Update applied. Restarting application..." + releaseEntry, "Update Applied", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            // Restart the application after the update is applied
+                            UpdateManager.RestartApp();
+                            return;
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("No updates found.", "No Update", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Failed to check for updates: {ex.Message}", "Update Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             // Continue with your application startup
+            MessageBox.Show("Starting application...", "Application Startup", MessageBoxButtons.OK, MessageBoxIcon.Information);
             ApplicationConfiguration.Initialize();
             Application.Run(new Form1());
         }
