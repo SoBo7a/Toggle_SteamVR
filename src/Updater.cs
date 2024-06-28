@@ -11,23 +11,16 @@ namespace Toggle_SteamVR.src
     {
         public static async Task CheckAndUpdate(string releasesUrl)
         {
-            try
-            {
-                using (var mgr = new UpdateManager(releasesUrl))
-                {
-                    var releaseEntry = await mgr.UpdateApp();
+            using (var mgr = new UpdateManager(releasesUrl))
+            {   
+                var releaseEntry = await mgr.UpdateApp();
 
-                    if (releaseEntry != null)
-                    {
-                        MessageBox.Show($"Updated to Version:\n{releaseEntry.Version}", "Toggle SteamVR", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        RestartApplication(releaseEntry.Version.ToString());
-                        return; // Exit method to prevent further execution
-                    }
+                if (releaseEntry != null)
+                {
+                    MessageBox.Show($"Updated to Version:\n{releaseEntry.Version}", "Toggle SteamVR", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    RestartApplication(releaseEntry.Version.ToString());
+                    return; // Exit method to prevent further execution
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Failed to check for updates: {ex.Message}", "Update Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
