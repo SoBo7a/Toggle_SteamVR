@@ -15,26 +15,19 @@ namespace Toggle_SteamVR.src
         {
             const string releasesUrl = "https://raw.githubusercontent.com/SoBo7a/Toggle_SteamVR/development/Releases/";
 
-            try
-            {
-                using (var mgr = new UpdateManager(releasesUrl))
-                {
-                    // Check for updates and apply them
-                    var releaseEntry = await mgr.UpdateApp();
-
-                    if (releaseEntry != null)
-                    {
-                        MessageBox.Show("Updated to Version: " + releaseEntry.Version, "Update Check", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                        // Restart the application
-                        RestartApplication();
-                        return;
-                    }
+            using (var mgr = new UpdateManager(releasesUrl))
+            {    
+                // Check for updates and apply them             
+                var releaseEntry = await mgr.UpdateApp();
+                
+                if (releaseEntry != null)  
+                {   
+                    MessageBox.Show("Updated to Version: " + releaseEntry.Version, "Update Check", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    
+                    // Restart the application
+                    RestartApplication();
+                    return;
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Failed to check for updates: {ex.Message}", "Update Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             // Continue with your application startup
