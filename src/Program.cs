@@ -20,33 +20,26 @@ namespace Toggle_SteamVR.src
                 if (releaseEntry != null)
                 {
                     MessageBox.Show("Updated to Version: " + releaseEntry?.Version, "Update Check", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    RestartApplication();
+                    RestartApplication(releaseEntry?.Version.ToString());
+                    return; // Exit Main method to prevent further execution
                 }
             }
-
-            MessageBox.Show(Application.ExecutablePath, "Test", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             ApplicationConfiguration.Initialize();
             Application.Run(new Form1());
         }
 
-        private static void RestartApplication()
+        private static void RestartApplication(string newVersion)
         {
-            string batchFilePath = Path.Combine(Path.GetTempPath(), "restart.bat");
+            string currentExecutablePath = Application.ExecutablePath;
+            string currentDirectory = Path.GetDirectoryName(currentExecutablePath);
+            string newExecutablePath = Path.Combine(currentDirectory, $"app-{newVersion}", "Toggle_SteamVR.exe");
 
-            using (StreamWriter writer = new StreamWriter(batchFilePath))
-            {
-                writer.WriteLine("@echo off");
-                writer.WriteLine("timeout /t 3 /nobreak > nul");
-                writer.WriteLine("start \"\" \"" + Application.ExecutablePath + "\"");
-            }
+            // Kill the current process
+            Process.GetCurrentProcess().Kill();
 
-            Process.Start(new ProcessStartInfo()
-            {
-                FileName = batchFilePath,
-                UseShellExecute = false,
-                CreateNoWindow = true
-            });
+            // Start the new process
+            Process.Start(newExecutablePath);
         }
     }
 }
