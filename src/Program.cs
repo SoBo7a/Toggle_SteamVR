@@ -9,9 +9,7 @@ namespace Toggle_SteamVR.src
         [STAThread]
         static async Task Main()
         {
-            const string releasesUrl = "https://raw.githubusercontent.com/SoBo7a/Toggle_SteamVR/development/Releases/";
-
-            await Updater.CheckAndUpdate(releasesUrl);
+            await Updater.CheckAndUpdate();
 
             ApplicationConfiguration.Initialize();
             Application.Run(new Form1());

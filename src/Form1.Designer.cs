@@ -35,6 +35,7 @@
             enableMenuItem = new ToolStripMenuItem();
             disableMenuItem = new ToolStripMenuItem();
             exitMenuItem = new ToolStripMenuItem();
+            checkForUpdatesToolStripMenuItem = new ToolStripMenuItem();
             contextMenuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -47,30 +48,37 @@
             // 
             // contextMenuStrip1
             // 
-            contextMenuStrip1.Items.AddRange(new ToolStripItem[] { enableMenuItem, disableMenuItem, exitMenuItem });
+            contextMenuStrip1.Items.AddRange(new ToolStripItem[] { enableMenuItem, disableMenuItem, checkForUpdatesToolStripMenuItem, exitMenuItem });
             contextMenuStrip1.Name = "contextMenuStrip1";
-            contextMenuStrip1.Size = new Size(163, 70);
+            contextMenuStrip1.Size = new Size(181, 114);
             // 
             // enableMenuItem
             // 
             enableMenuItem.Name = "enableMenuItem";
-            enableMenuItem.Size = new Size(162, 22);
+            enableMenuItem.Size = new Size(180, 22);
             enableMenuItem.Text = "Enable SteamVR";
             enableMenuItem.Click += enableMenuItem_Click;
             // 
             // disableMenuItem
             // 
             disableMenuItem.Name = "disableMenuItem";
-            disableMenuItem.Size = new Size(162, 22);
+            disableMenuItem.Size = new Size(180, 22);
             disableMenuItem.Text = "Disable SteamVR";
             disableMenuItem.Click += disableMenuItem_Click;
             // 
             // exitMenuItem
             // 
             exitMenuItem.Name = "exitMenuItem";
-            exitMenuItem.Size = new Size(162, 22);
+            exitMenuItem.Size = new Size(180, 22);
             exitMenuItem.Text = "Exit";
             exitMenuItem.Click += exitMenuItem_Click;
+            // 
+            // checkForUpdatesToolStripMenuItem
+            // 
+            checkForUpdatesToolStripMenuItem.Name = "checkForUpdatesToolStripMenuItem";
+            checkForUpdatesToolStripMenuItem.Size = new Size(180, 22);
+            checkForUpdatesToolStripMenuItem.Text = "Check for Updates";
+            checkForUpdatesToolStripMenuItem.Click += checkForUpdatesToolStripMenuItem_Click;
             // 
             // Form1
             // 
@@ -91,5 +99,6 @@
         private ToolStripMenuItem enableMenuItem;
         private ToolStripMenuItem disableMenuItem;
         private ToolStripMenuItem exitMenuItem;
+        private ToolStripMenuItem checkForUpdatesToolStripMenuItem;
     }
 }

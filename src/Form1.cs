@@ -1,5 +1,6 @@
 using System.Reflection;
 using System.Xml.Linq;
+using Toggle_SteamVR.src;
 
 namespace Toggle_SteamVR
 {
@@ -73,6 +74,11 @@ namespace Toggle_SteamVR
         private void exitMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private async void checkForUpdatesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            await Updater.CheckAndUpdate();
         }
 
         private void enableMenuItem_Click(object sender, EventArgs e)
