@@ -35,7 +35,7 @@ namespace Toggle_SteamVR.src
             using (StreamWriter writer = new StreamWriter(batchFilePath))
             {
                 writer.WriteLine("@echo off");
-                writer.WriteLine("timeout /t 1 /nobreak > nul");
+                writer.WriteLine("timeout /t 3 /nobreak > nul");
                 writer.WriteLine("start \"\" \"" + Application.ExecutablePath + "\"");
             }
 
@@ -46,7 +46,7 @@ namespace Toggle_SteamVR.src
                 CreateNoWindow = true
             });
 
-            Environment.Exit(0);
+            Application.Exit();
         }
     }
 }
