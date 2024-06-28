@@ -14,8 +14,14 @@ namespace Toggle_SteamVR.src
             const string releasesUrl = "https://raw.githubusercontent.com/SoBo7a/Toggle_SteamVR/development/Releases/";
             using (var mgr = new UpdateManager(releasesUrl))
             {
-            // Check for updates
-            await mgr.UpdateApp();             
+                // Check for updates
+                var releaseEntry = await mgr.UpdateApp();
+
+                if (releaseEntry != null)
+                {
+                    //restart app if an update was installed
+                    UpdateManager.RestartApp();
+                }            
             }
 
             ApplicationConfiguration.Initialize();
