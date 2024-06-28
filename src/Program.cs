@@ -19,7 +19,7 @@ namespace Toggle_SteamVR.src
 
                 if (releaseEntry != null)
                 {
-                    MessageBox.Show("Updated to Version: " + releaseEntry?.Version, "Update Check", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Updated to Version:\n" + releaseEntry?.Version, "Toggle SteamVR", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     RestartApplication(releaseEntry?.Version.ToString());
                     return; // Exit Main method to prevent further execution
                 }
