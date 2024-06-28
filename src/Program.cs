@@ -24,6 +24,8 @@ namespace Toggle_SteamVR.src
                 }
             }
 
+            MessageBox.Show(Application.ExecutablePath, "Test", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
             ApplicationConfiguration.Initialize();
             Application.Run(new Form1());
         }
@@ -45,8 +47,6 @@ namespace Toggle_SteamVR.src
                 UseShellExecute = false,
                 CreateNoWindow = true
             });
-
-            Application.Exit();
         }
     }
 }
