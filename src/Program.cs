@@ -1,5 +1,8 @@
 using Squirrel;
 using System;
+using System.Diagnostics;
+using System.IO;
+using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -10,25 +13,49 @@ namespace Toggle_SteamVR.src
         [STAThread]
         static async Task Main()
         {
-            // Initialize Squirrel update manager with your GitHub releases URL
             const string releasesUrl = "https://raw.githubusercontent.com/SoBo7a/Toggle_SteamVR/development/Releases/";
-            using (var mgr = new UpdateManager(releasesUrl))
+
+            try
             {
-                // Check for updates
-                var releaseEntry = await mgr.UpdateApp();
-
-
-                if (releaseEntry != null)
+                using (var mgr = new UpdateManager(releasesUrl))
                 {
-                    //restart app if an update was installed
-                    // MessageBox.Show("Updated, please restart the app...", "Update Check", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    // UpdateManager.RestartApp();
-                    MessageBox.Show("Updated to Version: " + releaseEntry?.Version, "Update Check", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }            
-            }                       
+                    // Check for updates and apply them
+                    var releaseEntry = await mgr.UpdateApp();
 
+                    if (releaseEntry != null)
+                    {
+                        MessageBox.Show("Updated to Version: " + releaseEntry.Version, "Update Check", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        // Restart the application
+                        RestartApplication();
+                        return;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Failed to check for updates: {ex.Message}", "Update Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            // Continue with your application startup
             ApplicationConfiguration.Initialize();
             Application.Run(new Form1());
+        }
+
+        private static void RestartApplication()
+        {
+            string exePath = Assembly.GetExecutingAssembly().Location;
+            string exeDir = Path.GetDirectoryName(exePath);
+            string newExePath = Path.Combine(exeDir, Path.GetFileName(exePath));
+
+            var startInfo = new ProcessStartInfo(newExePath)
+            {
+                UseShellExecute = true,
+                WorkingDirectory = exeDir
+            };
+
+            Process.Start(startInfo);
+            Application.Exit();
         }
     }
 }
