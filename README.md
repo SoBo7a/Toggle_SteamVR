@@ -1,58 +1,82 @@
 # Toggle SteamVR
 
-Toggle SteamVR is a small Windows application built with C# that allows users to enable or disable SteamVR by toggling the directory name. It runs in the background and provides a system tray icon for easy access.
+Toggle SteamVR is a small Windows application built with C# that allows users to enable or disable SteamVR by changing the folder name of SteamVR. It runs in the background and provides a system tray icon for easy access.
 
 
 ## Features
 
-- Enable/Disable SteamVR: Quickly toggle between enabling and disabling SteamVR by renaming its installation directory.
-- System Tray Integration: Displays an icon in the system tray (notification area) for easy access to enable or disable SteamVR.
-- Notification Balloons: Shows informative tooltips when SteamVR is enabled or disabled.
+1. **Enable/Disable SteamVR:**
+	- **Quick Toggle:** Seamlessly enable or disable SteamVR by renaming its installation directory, ensuring minimal disruption to your workflow.
+	
+2. **System Tray Integration:**
+	- **Easy Access:** An icon in the system tray (notification area) provides convenient access to enable or disable SteamVR with just a few clicks.
+
+3. **Startup Options:**
+	- **Start with Windows:** Choose whether the app should automatically start with Windows, providing immediate availability when your computer boots up.
+
+4. **Automatic Updates:**
+	- **Stay Up-to-Date:** Always receive the latest version of the app through automatic updates, ensuring you have the latest features and security improvements without manual intervention.
 
 
 ## Installation
 
 To use Toggle SteamVR:
 
-1. Download: Clone or download the repository.
-2. Build: Open the solution in Visual Studio and build the project.
-3. Run: Execute the built executable (Toggle_SteamVR.exe).
+1. **Download the Latest Version:**	
+	- Navigate to the [Releases Section](https://github.com/SoBo7a/Toggle_SteamVR/releases/latest) on the GitHub repository and download the latest Setup.exe.
 
+2. **Install the Application:**	
+	- Run the downloaded Setup.exe to install Toggle SteamVR. The application will be installed in the %localappdata%\ToggleSteamVR directory on your machine.
 
-## Configuration
+3. **Launch the Application:**
+	- After installation, the app will automatically launch and create a Desktop Shortcut. You can access the running app via the system tray icon on your taskbar.
 
-- Config File: Modify config.xml to specify the installation path of SteamVR. Ensure the installPath element under steamVR is correctly set to your SteamVR directory.
-
-Example config.xml:
-```xml
-<?xml version="1.0" encoding="utf-8"?>
-<config>
-  <steamVR>
-    <installPath>C:\Program Files (x86)\Steam\steamapps\common\SteamVR</installPath>
-  </steamVR>
-</config>
-```
+4. **Configure Settings:**
+	- Open the app settings from the system tray icon to configure and customize the application according to your needs.
 
 
 ## Usage
 
-- System Tray Icon: Right-click the Toggle SteamVR icon in the system tray to access options:
-  - Enable SteamVR: Renames the SteamVR directory to remove "- Disabled".
-  - Disable SteamVR: Renames the SteamVR directory to append " - Disabled".
-  - Exit: Closes the application.
+Right-click the Toggle SteamVR icon in the system tray to access the following options:
+
+- **Enable SteamVR:** Restores the SteamVR directory to its default name, enabling SteamVR functionality.
+- **Disable SteamVR:** Renames the SteamVR directory to append " - Disabled", effectively disabling SteamVR.
+- **Check for Updates:** Automatically checks for and installs the latest version of Toggle SteamVR without requiring a restart.
+- **Settings:** Opens the settings menu to customize and configure the application according to your preferences.
+- **Exit:** Closes the application and removes the icon from the system tray.
 
 
 ## Troubleshooting
 
 If you encounter issues:
 
-- Configuration Error: Ensure config.xml contains the correct path to your SteamVR installation.
-- Icon Missing: If the application icon is missing in the system tray, ensure all resources (*.ico files) are properly included in the project and set in Visual Studio project settings.
+- **Configuration Error:** Ensure config.xml contains the correct path to your SteamVR installation.
 
 
 ## Contributing
 
 Contributions are welcome! Feel free to fork the repository, make changes, and submit pull requests.
+
+
+## Release a New Version (For Developers Only)
+
+To release a new version with your changes, follow these steps:
+
+1. Open the project in Visual Studio.
+2. Navigate to the Package Manager Console.
+3. Run the following command:
+
+```batch
+.\build-and-release.ps1 -version [newVersionNumber] -releaseNotes "[someReleaseNotes]"
+```
+Replace [newVersionNumber] with the new version number and [releaseNotes] with a brief description of the changes in this release.
+
+This command will:
+- Build the app in "Release" config of Visual Studio.
+- Create the NuGet package.
+- Releasify the package.
+
+Afterward, you can push the changes to the GitHub repository's branch from which users update their app (e.g., "master"). The new update can then be applied in the app using the update functionality.
 
 
 ## Attribution
