@@ -34,8 +34,8 @@
             contextMenuStrip1 = new ContextMenuStrip(components);
             enableMenuItem = new ToolStripMenuItem();
             disableMenuItem = new ToolStripMenuItem();
-            exitMenuItem = new ToolStripMenuItem();
             checkForUpdatesToolStripMenuItem = new ToolStripMenuItem();
+            exitMenuItem = new ToolStripMenuItem();
             contextMenuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -50,42 +50,42 @@
             // 
             contextMenuStrip1.Items.AddRange(new ToolStripItem[] { enableMenuItem, disableMenuItem, checkForUpdatesToolStripMenuItem, exitMenuItem });
             contextMenuStrip1.Name = "contextMenuStrip1";
-            contextMenuStrip1.Size = new Size(181, 114);
+            contextMenuStrip1.Size = new Size(172, 92);
             // 
             // enableMenuItem
             // 
             enableMenuItem.Name = "enableMenuItem";
-            enableMenuItem.Size = new Size(180, 22);
+            enableMenuItem.Size = new Size(171, 22);
             enableMenuItem.Text = "Enable SteamVR";
             enableMenuItem.Click += enableMenuItem_Click;
             // 
             // disableMenuItem
             // 
             disableMenuItem.Name = "disableMenuItem";
-            disableMenuItem.Size = new Size(180, 22);
+            disableMenuItem.Size = new Size(171, 22);
             disableMenuItem.Text = "Disable SteamVR";
             disableMenuItem.Click += disableMenuItem_Click;
-            // 
-            // exitMenuItem
-            // 
-            exitMenuItem.Name = "exitMenuItem";
-            exitMenuItem.Size = new Size(180, 22);
-            exitMenuItem.Text = "Exit";
-            exitMenuItem.Click += exitMenuItem_Click;
             // 
             // checkForUpdatesToolStripMenuItem
             // 
             checkForUpdatesToolStripMenuItem.Name = "checkForUpdatesToolStripMenuItem";
-            checkForUpdatesToolStripMenuItem.Size = new Size(180, 22);
+            checkForUpdatesToolStripMenuItem.Size = new Size(171, 22);
             checkForUpdatesToolStripMenuItem.Text = "Check for Updates";
             checkForUpdatesToolStripMenuItem.Click += checkForUpdatesToolStripMenuItem_Click;
             // 
-            // Form1
+            // exitMenuItem
+            // 
+            exitMenuItem.Name = "exitMenuItem";
+            exitMenuItem.Size = new Size(171, 22);
+            exitMenuItem.Text = "Exit";
+            exitMenuItem.Click += exitMenuItem_Click;
+            // 
+            // NotificationForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Name = "Form1";
+            Name = "NotificationForm";
             Text = "Form1";
             Load += Form1_Load;
             contextMenuStrip1.ResumeLayout(false);
