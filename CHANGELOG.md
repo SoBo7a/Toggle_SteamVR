@@ -1,3 +1,7 @@
+## v1.1.2
+- fixed issue where config was overwritten while updating
+
+
 ## v1.1.1
 - changed update url to master branch instead of development
 - removed unnecessary MessageBox

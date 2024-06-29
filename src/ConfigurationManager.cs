@@ -7,7 +7,9 @@ namespace Toggle_SteamVR.src
 {
     public static class ConfigurationManager
     {
-        private static string configFilePath = Path.Combine(Application.StartupPath, "config.xml");
+        private static string configDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "ToggleSteamVR_Config");
+        private static string defaultConfigFilePath = Path.Combine(Application.StartupPath, "config.xml");
+        private static string configFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "ToggleSteamVR_Config", "config.xml");
         private static string steamVRPath;
         private static bool autoUpdateEnabled;
         private static bool startWithWindows;
@@ -16,6 +18,8 @@ namespace Toggle_SteamVR.src
         {
             try
             {
+                CreateDefaultConfiguration();
+
                 // Load configuration file
                 XDocument doc = XDocument.Load(configFilePath);
 
@@ -99,6 +103,36 @@ namespace Toggle_SteamVR.src
             catch (Exception ex)
             {
                 MessageBox.Show($"Failed to update auto-start setting: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private static void CreateDefaultConfiguration()
+        {
+            try
+            {
+                // Ensure the configuration directory exists
+                if (!Directory.Exists(configDirectory))
+                {
+                    Directory.CreateDirectory(configDirectory);
+                }
+
+                // Check if configFilePath exists, if not, copy default config.xml
+                if (!File.Exists(configFilePath))
+                {
+                    if (File.Exists(defaultConfigFilePath))
+                    {
+                        File.Copy(defaultConfigFilePath, configFilePath);
+                    }
+                    else
+                    {
+                        // Handle case where default config.xml doesn't exist
+                        MessageBox.Show("Default configuration file not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred while creating default configuration: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
