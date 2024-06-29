@@ -8,7 +8,7 @@ namespace Toggle_SteamVR
     public partial class SettingsForm : Form
     {
         private string repoBaseUrl = "https://github.com/SoBo7a/Toggle_SteamVR";
-        private string appVersion = Assembly.GetExecutingAssembly().GetName().Version.ToString();
+        private string appVersion;
         private string steamVRPath;
         private bool autoUpdateEnabled;
         private bool startWithWindows;
@@ -61,8 +61,15 @@ namespace Toggle_SteamVR
 
         private void DisplayVersion()
         {
+            appVersion = GetFormattedVersion();
             currentVersionLink.Text = $"Current Version: {appVersion}";
             currentVersionLink.Links.Add(17, appVersion.Length);
+        }
+
+        private string GetFormattedVersion()
+        {
+            Version version = Assembly.GetExecutingAssembly().GetName().Version;
+            return version.Revision == 0 ? version.ToString(3) : version.ToString();
         }
 
         private string GetGitHubLink(string version)

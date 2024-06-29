@@ -11,7 +11,7 @@ namespace Toggle_SteamVR.src
     {
         public static async Task CheckAndUpdate(bool userInitiated = false)
         {
-            const string releasesUrl = "https://raw.githubusercontent.com/SoBo7a/Toggle_SteamVR/development/Releases/";
+            const string releasesUrl = "https://raw.githubusercontent.com/SoBo7a/Toggle_SteamVR/master/Releases/";
 
             using (var mgr = new UpdateManager(releasesUrl))
             {   
