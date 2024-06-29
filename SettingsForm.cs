@@ -11,6 +11,7 @@ namespace Toggle_SteamVR
         private string appVersion = Assembly.GetExecutingAssembly().GetName().Version.ToString();
         private string steamVRPath;
         private bool autoUpdateEnabled;
+        private bool startWithWindows;
 
         public SettingsForm()
         {
@@ -21,8 +22,10 @@ namespace Toggle_SteamVR
 
         private void LoadSettings()
         {
+            ConfigurationManager.LoadConfiguration();
             textBoxSteamVRPath.Text = ConfigurationManager.SteamVRPath;
             updateCheckBox.Checked = ConfigurationManager.AutoUpdateEnabled;
+            startWithWindowsCheckBox.Checked = ConfigurationManager.StartWithWindows;
         }
 
         private void textBoxSteamVRPath_TextChanged(object sender, EventArgs e)
@@ -32,9 +35,16 @@ namespace Toggle_SteamVR
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            ConfigurationManager.SaveConfiguration(steamVRPath, autoUpdateEnabled);
+            ConfigurationManager.SaveConfiguration(steamVRPath, autoUpdateEnabled, startWithWindows);
+
+            ConfigurationManager.LoadConfiguration();
 
             MessageBox.Show("Configuration saved successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            this.Close();
+        }
+
+        private void cancelButton_Click(object sender, EventArgs e)
+        {
             this.Close();
         }
 
@@ -42,6 +52,11 @@ namespace Toggle_SteamVR
         {
             autoUpdateEnabled = updateCheckBox.Checked;
 
+        }
+
+        private void startWithWindowsCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            startWithWindows = startWithWindowsCheckBox.Checked;
         }
 
         private void DisplayVersion()

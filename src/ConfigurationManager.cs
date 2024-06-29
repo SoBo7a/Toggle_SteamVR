@@ -10,6 +10,7 @@ namespace Toggle_SteamVR.src
         private static string configFilePath = Path.Combine(Application.StartupPath, "config.xml");
         private static string steamVRPath;
         private static bool autoUpdateEnabled;
+        private static bool startWithWindows;
 
         public static void LoadConfiguration()
         {
@@ -24,6 +25,7 @@ namespace Toggle_SteamVR.src
                 {
                     steamVRPath = steamVRConfig.Element("installPath")?.Value;
                     bool.TryParse(steamVRConfig.Element("autoUpdateEnabled")?.Value, out autoUpdateEnabled);
+                    bool.TryParse(steamVRConfig.Element("startWithWindows")?.Value, out startWithWindows);
                 }
             }
             catch (Exception ex)
@@ -39,7 +41,7 @@ namespace Toggle_SteamVR.src
             }
         }
 
-        public static void SaveConfiguration(string newSteamVRPath, bool newAutoUpdateEnabled)
+        public static void SaveConfiguration(string newSteamVRPath, bool newAutoUpdateEnabled, bool newStartWithWindows)
         {
             try
             {
@@ -49,11 +51,15 @@ namespace Toggle_SteamVR.src
                 {
                     steamVRConfig.Element("installPath").Value = newSteamVRPath;
                     steamVRConfig.Element("autoUpdateEnabled").Value = newAutoUpdateEnabled.ToString();
+                    steamVRConfig.Element("startWithWindows").Value = newStartWithWindows.ToString();
                     doc.Save(configFilePath);
+
+                    UpdateAutoStartRegistry(newStartWithWindows);
 
                     // Update static variables after saving
                     steamVRPath = newSteamVRPath;
                     autoUpdateEnabled = newAutoUpdateEnabled;
+                    startWithWindows = newStartWithWindows;
                 }
                 else
                 {
@@ -63,6 +69,38 @@ namespace Toggle_SteamVR.src
             catch (Exception ex)
             {
                 MessageBox.Show($"An error occurred while saving the configuration: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private static void UpdateAutoStartRegistry(bool enable)
+        {
+            const string runKey = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Run";
+            const string appName = "Toggle_SteamVR";
+
+            MessageBox.Show("Updating Autostart");
+
+            try
+            {
+                using (Microsoft.Win32.RegistryKey key = Microsoft.Win32.Registry.CurrentUser.OpenSubKey(runKey, true))
+                {
+                    if (key == null)
+                        return;
+
+                    if (enable)
+                    {
+                        // Add application to auto-start
+                        key.SetValue(appName, Application.ExecutablePath);
+                    }
+                    else
+                    {
+                        // Remove application from auto-start
+                        key.DeleteValue(appName, false);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Failed to update auto-start setting: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -76,6 +114,12 @@ namespace Toggle_SteamVR.src
         {
             get { return autoUpdateEnabled; }
             set { autoUpdateEnabled = value; }
+        }
+
+        public static bool StartWithWindows
+        {
+            get { return startWithWindows; }
+            set { startWithWindows = value; }
         }
     }
 }
