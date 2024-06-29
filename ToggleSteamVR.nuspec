@@ -2,12 +2,12 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>ToggleSteamVR</id>
-    <version>1.0.2</version>
+    <version>$version$</version>
     <title>Toggle SteamVR</title>
     <authors>SoBo7a</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Enable or Disable SteamVR easily.</description>
-    <releaseNotes>Test</releaseNotes>
+    <releaseNotes>$releaseNotes$</releaseNotes>
   </metadata>
   <files>
     <file src="bin\Release\net6.0-windows\**\*.*" target="lib\net45" />
