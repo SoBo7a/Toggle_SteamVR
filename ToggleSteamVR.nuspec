@@ -6,6 +6,8 @@
     <title>Toggle SteamVR</title>
     <authors>SoBo7a</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
+	<licenseUrl>https://github.com/SoBo7a/Toggle_SteamVR/blob/master/LICENSE.txt</licenseUrl>
+	<readme>lib\net45\README.md</readme>
     <description>Enable or Disable SteamVR easily.</description>
     <releaseNotes>$releaseNotes$</releaseNotes>
   </metadata>
