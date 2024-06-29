@@ -14,7 +14,9 @@ namespace Toggle_SteamVR
         {
             InitializeComponent();
             LoadIcons();
-            LoadConfiguration();
+
+            ConfigurationManager.LoadConfiguration();
+            steamVRPath = ConfigurationManager.SteamVRPath;
         }
 
         private void LoadIcons()
@@ -30,33 +32,6 @@ namespace Toggle_SteamVR
                 disabledIcon = new Icon(stream);
             }
         }
-
-        private void LoadConfiguration()
-        {
-            try
-            {
-                string configFilePath = Path.Combine(Application.StartupPath, "config.xml");
-
-                // Load configuration file
-                XDocument doc = XDocument.Load(configFilePath);
-                XElement steamVRConfig = doc.Element("config")?.Element("steamVR");
-                if (steamVRConfig != null)
-                {
-                    steamVRPath = steamVRConfig.Element("installPath")?.Value;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error loading configuration: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-            if (string.IsNullOrEmpty(steamVRPath))
-            {
-                MessageBox.Show("SteamVR installation path not found in configuration.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Close(); // Close the application if the path is not found
-            }
-        }
-
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -151,6 +126,12 @@ namespace Toggle_SteamVR
             {
                 notifyIcon1.Icon = disabledIcon;
             }
+        }
+
+        private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SettingsForm settingsForm = new SettingsForm();
+            settingsForm.ShowDialog();
         }
     }
 }

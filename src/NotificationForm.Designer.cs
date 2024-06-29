@@ -36,6 +36,7 @@
             disableMenuItem = new ToolStripMenuItem();
             checkForUpdatesToolStripMenuItem = new ToolStripMenuItem();
             exitMenuItem = new ToolStripMenuItem();
+            settingsToolStripMenuItem = new ToolStripMenuItem();
             contextMenuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -48,37 +49,44 @@
             // 
             // contextMenuStrip1
             // 
-            contextMenuStrip1.Items.AddRange(new ToolStripItem[] { enableMenuItem, disableMenuItem, checkForUpdatesToolStripMenuItem, exitMenuItem });
+            contextMenuStrip1.Items.AddRange(new ToolStripItem[] { enableMenuItem, disableMenuItem, checkForUpdatesToolStripMenuItem, settingsToolStripMenuItem, exitMenuItem });
             contextMenuStrip1.Name = "contextMenuStrip1";
-            contextMenuStrip1.Size = new Size(172, 92);
+            contextMenuStrip1.Size = new Size(181, 136);
             // 
             // enableMenuItem
             // 
             enableMenuItem.Name = "enableMenuItem";
-            enableMenuItem.Size = new Size(171, 22);
+            enableMenuItem.Size = new Size(180, 22);
             enableMenuItem.Text = "Enable SteamVR";
             enableMenuItem.Click += enableMenuItem_Click;
             // 
             // disableMenuItem
             // 
             disableMenuItem.Name = "disableMenuItem";
-            disableMenuItem.Size = new Size(171, 22);
+            disableMenuItem.Size = new Size(180, 22);
             disableMenuItem.Text = "Disable SteamVR";
             disableMenuItem.Click += disableMenuItem_Click;
             // 
             // checkForUpdatesToolStripMenuItem
             // 
             checkForUpdatesToolStripMenuItem.Name = "checkForUpdatesToolStripMenuItem";
-            checkForUpdatesToolStripMenuItem.Size = new Size(171, 22);
+            checkForUpdatesToolStripMenuItem.Size = new Size(180, 22);
             checkForUpdatesToolStripMenuItem.Text = "Check for Updates";
             checkForUpdatesToolStripMenuItem.Click += checkForUpdatesToolStripMenuItem_Click;
             // 
             // exitMenuItem
             // 
             exitMenuItem.Name = "exitMenuItem";
-            exitMenuItem.Size = new Size(171, 22);
+            exitMenuItem.Size = new Size(180, 22);
             exitMenuItem.Text = "Exit";
             exitMenuItem.Click += exitMenuItem_Click;
+            // 
+            // settingsToolStripMenuItem
+            // 
+            settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
+            settingsToolStripMenuItem.Size = new Size(180, 22);
+            settingsToolStripMenuItem.Text = "Settings";
+            settingsToolStripMenuItem.Click += settingsToolStripMenuItem_Click;
             // 
             // NotificationForm
             // 
@@ -100,5 +108,6 @@
         private ToolStripMenuItem disableMenuItem;
         private ToolStripMenuItem exitMenuItem;
         private ToolStripMenuItem checkForUpdatesToolStripMenuItem;
+        private ToolStripMenuItem settingsToolStripMenuItem;
     }
 }

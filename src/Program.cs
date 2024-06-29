@@ -23,7 +23,10 @@ namespace Toggle_SteamVR.src
             }
 
             // Check if the app is running from the installed location or the built exe is used for development
-            if (IsRunningFromInstalledLocation())
+            ConfigurationManager.LoadConfiguration();
+            bool autoUpdateEnabled = ConfigurationManager.AutoUpdateEnabled;
+
+            if (IsRunningFromInstalledLocation() && autoUpdateEnabled)
             {
                 await Updater.CheckAndUpdate();
             }
