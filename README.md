@@ -4,17 +4,14 @@ Toggle SteamVR is a small Windows application built with C# that allows users to
 
 
 ## Features
-
-1. **Enable/Disable SteamVR:**
-	- **Quick Toggle:** Seamlessly enable or disable SteamVR by renaming its installation directory, ensuring minimal disruption to your workflow.
 	
-2. **System Tray Integration:**
+1. **System Tray Integration:**
 	- **Easy Access:** An icon in the system tray (notification area) provides convenient access to enable or disable SteamVR with just a few clicks.
 
-3. **Startup Options:**
+2. **Startup Options:**
 	- **Start with Windows:** Choose whether the app should automatically start with Windows, providing immediate availability when your computer boots up.
 
-4. **Automatic Updates:**
+3. **Automatic Updates:**
 	- **Stay Up-to-Date:** Always receive the latest version of the app through automatic updates, ensuring you have the latest features and security improvements without manual intervention.
 
 
