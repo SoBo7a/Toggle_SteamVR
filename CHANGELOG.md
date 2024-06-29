@@ -1,3 +1,10 @@
+## v1.1.0
+- added settings
+	- change the SteamVR path if you use a custom installation path
+	- enable or disable automatic updates on app startup
+	- enable or disable autostart with windows 
+
+
 ## v1.0.1
 - prevent running multiple instances of the app at once
 - code refactoring
