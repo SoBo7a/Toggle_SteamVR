@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
 using System.Xml.Linq;
@@ -152,6 +152,53 @@ namespace Toggle_SteamVR.src
         {
             get { return startWithWindows; }
             set { startWithWindows = value; }
+        }
+
+        public static List<string> GetAppList()
+        {
+            List<string> appList = new List<string>();
+
+            if (File.Exists(configFilePath))
+            {
+                XDocument doc = XDocument.Load(configFilePath);
+                XElement disableAppsElement = doc.Element("config")?.Element("steamVR")?.Element("disableApps");
+
+                if (disableAppsElement != null)
+                {
+                    foreach (XElement appElement in disableAppsElement.Elements("app"))
+                    {
+                        appList.Add(appElement.Value);
+                    }
+                }
+            }
+
+            return appList;
+        }
+
+        public static void AddToAppList(List<string> appList)
+        {
+            XDocument doc = XDocument.Load(configFilePath);
+            XElement steamVRElement = doc.Element("config")?.Element("steamVR");
+
+            if (steamVRElement != null)
+            {
+                // Remove existing disableApps element if it exists
+                steamVRElement.Element("disableApps")?.Remove();
+
+                // Create a new disableApps element
+                XElement disableAppsElement = new XElement("disableApps");
+                foreach (string app in appList)
+                {
+                    disableAppsElement.Add(new XElement("app", app));
+                }
+
+                steamVRElement.Add(disableAppsElement);
+                doc.Save(configFilePath);
+            }
+            else
+            {
+                MessageBox.Show("The config file does not contain a <steamVR> element.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

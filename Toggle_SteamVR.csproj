@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-	<AssemblyVersion>1.1.2</AssemblyVersion>  
-    <FileVersion>1.1.2</FileVersion>  
+	<AssemblyVersion>1.2.0</AssemblyVersion>  
+    <FileVersion>1.2.0</FileVersion>  
     <Authors>SoBo7a</Authors>  
     <OutputType>WinExe</OutputType>
     <TargetFramework>net6.0-windows</TargetFramework>

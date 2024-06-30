@@ -35,6 +35,7 @@
             currentVersionLink = new LinkLabel();
             startWithWindowsCheckBox = new CheckBox();
             cancelButton = new Button();
+            manageDisableAppsButton = new Button();
             SuspendLayout();
             // 
             // labelSteamVRPath
@@ -56,7 +57,7 @@
             // 
             // buttonSave
             // 
-            buttonSave.Location = new Point(223, 146);
+            buttonSave.Location = new Point(223, 167);
             buttonSave.Name = "buttonSave";
             buttonSave.Size = new Size(75, 23);
             buttonSave.TabIndex = 3;
@@ -78,7 +79,7 @@
             // currentVersionLink
             // 
             currentVersionLink.AutoSize = true;
-            currentVersionLink.Location = new Point(12, 146);
+            currentVersionLink.Location = new Point(12, 171);
             currentVersionLink.Name = "currentVersionLink";
             currentVersionLink.Size = new Size(94, 15);
             currentVersionLink.TabIndex = 5;
@@ -99,7 +100,7 @@
             // 
             // cancelButton
             // 
-            cancelButton.Location = new Point(142, 146);
+            cancelButton.Location = new Point(142, 167);
             cancelButton.Name = "cancelButton";
             cancelButton.Size = new Size(75, 23);
             cancelButton.TabIndex = 7;
@@ -107,11 +108,22 @@
             cancelButton.UseVisualStyleBackColor = true;
             cancelButton.Click += cancelButton_Click;
             // 
+            // manageDisableAppsButton
+            // 
+            manageDisableAppsButton.Location = new Point(12, 119);
+            manageDisableAppsButton.Name = "manageDisableAppsButton";
+            manageDisableAppsButton.Size = new Size(175, 23);
+            manageDisableAppsButton.TabIndex = 8;
+            manageDisableAppsButton.Text = "Manage Auto-Disable Apps";
+            manageDisableAppsButton.UseVisualStyleBackColor = true;
+            manageDisableAppsButton.Click += manageDisableAppsButton_Click;
+            // 
             // SettingsForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(310, 173);
+            ClientSize = new Size(310, 195);
+            Controls.Add(manageDisableAppsButton);
             Controls.Add(cancelButton);
             Controls.Add(startWithWindowsCheckBox);
             Controls.Add(currentVersionLink);
@@ -134,5 +146,6 @@
         private LinkLabel currentVersionLink;
         private CheckBox startWithWindowsCheckBox;
         private Button cancelButton;
+        private Button manageDisableAppsButton;
     }
 }

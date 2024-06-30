@@ -1,5 +1,9 @@
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
 using System.Reflection;
-using System.Xml.Linq;
+using System.Windows.Forms;
 using Toggle_SteamVR.src;
 
 namespace Toggle_SteamVR
@@ -9,19 +13,20 @@ namespace Toggle_SteamVR
         private Icon enabledIcon;
         private Icon disabledIcon;
         private string steamVRPath;
+        private System.Windows.Forms.Timer checkProcessTimer;
+        private bool isLockedState;
 
         public NotificationForm()
         {
             InitializeComponent();
             LoadIcons();
-
             ConfigurationManager.LoadConfiguration();
             steamVRPath = ConfigurationManager.SteamVRPath;
+            InitializeTimer();
         }
 
         private void LoadIcons()
         {
-            // Load icons from embedded resources
             var assembly = Assembly.GetExecutingAssembly();
             using (var stream = assembly.GetManifestResourceStream("Toggle_SteamVR.Assets.steamvr_enabled.ico"))
             {
@@ -117,7 +122,6 @@ namespace Toggle_SteamVR
             enableMenuItem.Checked = Directory.Exists(steamVRPath);
             disableMenuItem.Checked = Directory.Exists(disabledSteamVRPath);
 
-            // Set the correct icon based on the current state
             if (enableMenuItem.Checked)
             {
                 notifyIcon1.Icon = enabledIcon;
@@ -132,6 +136,54 @@ namespace Toggle_SteamVR
         {
             SettingsForm settingsForm = new SettingsForm();
             settingsForm.ShowDialog();
+        }
+
+        private void InitializeTimer()
+        {
+            checkProcessTimer = new System.Windows.Forms.Timer();
+            checkProcessTimer.Interval = 500; // Check every 0.5 seconds
+            checkProcessTimer.Tick += CheckProcessTimer_Tick;
+            checkProcessTimer.Start();
+        }
+
+        private void CheckProcessTimer_Tick(object sender, EventArgs e)
+        {
+            CheckRunningProcesses();
+        }
+
+        private void CheckRunningProcesses()
+        {
+            List<string> disableApps = ConfigurationManager.GetAppList();
+            var runningProcesses = Process.GetProcesses().Select(p => p.ProcessName).ToList();
+
+            bool shouldDisable = disableApps.Any(app => runningProcesses.Contains(app, StringComparer.OrdinalIgnoreCase));
+
+            if (shouldDisable && Directory.Exists(steamVRPath))
+            {
+                ToggleSteamVR(false);
+                isLockedState = true;
+                enableMenuItem.Enabled = false;
+                disableMenuItem.Enabled = false;
+            }
+            else if (shouldDisable && Directory.Exists(steamVRPath + " - Disabled"))
+            {
+                enableMenuItem.Enabled = false;
+                disableMenuItem.Enabled = false;
+                return;
+            }
+            else if (!shouldDisable && isLockedState && Directory.Exists(steamVRPath + " - Disabled"))
+            {
+                ToggleSteamVR(true);
+                isLockedState = false;
+                enableMenuItem.Enabled = true;
+                disableMenuItem.Enabled = true; 
+            }
+            else if (!shouldDisable && Directory.Exists(steamVRPath + " - Disabled"))
+            {
+                enableMenuItem.Enabled = true;
+                disableMenuItem.Enabled = true;
+                return;
+            }
         }
     }
 }

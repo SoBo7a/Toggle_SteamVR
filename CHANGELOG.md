@@ -1,3 +1,7 @@
+## v1.2.0
+- code refactoring
+
+
 ## v1.1.2
 - fixed issue where config was overwritten while updating
 

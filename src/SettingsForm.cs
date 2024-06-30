@@ -94,5 +94,11 @@ namespace Toggle_SteamVR
                 MessageBox.Show($"Failed to open link: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void manageDisableAppsButton_Click(object sender, EventArgs e)
+        {
+            ManageAppsForm manageAppsForm = new ManageAppsForm();
+            manageAppsForm.ShowDialog();
+        }
     }
 }
