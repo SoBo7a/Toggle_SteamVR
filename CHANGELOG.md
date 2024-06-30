@@ -7,6 +7,7 @@
 - removed unnecessary MessageBox
 - fixed wrong formatting of version number in settings
 
+
 ## v1.1.0
 - added settings
 	- change the SteamVR path if you use a custom installation path
