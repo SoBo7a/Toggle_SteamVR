@@ -1,4 +1,5 @@
 ## v1.2.0
+- added auto disable function
 - code refactoring
 
 

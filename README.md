@@ -14,6 +14,9 @@ Toggle SteamVR is a small Windows application built with C# that allows users to
 3. **Automatic Updates:**
 	- **Stay Up-to-Date:** Always receive the latest version of the app through automatic updates, ensuring you have the latest features and security improvements without manual intervention.
 
+4. Auto Disable Function:
+	- Automatic Management: Automatically disables SteamVR when specified applications are running and restores the previous state when they are closed.
+
 
 ## Installation
 
