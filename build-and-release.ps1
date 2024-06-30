@@ -45,6 +45,10 @@ Write-Host "Releasifying the NuGet package..."
 $nupkgFileName = "ToggleSteamVR.$version.nupkg"
 Squirrel --releasify $nupkgFileName
 
+# Delete the generated .nupkg file
+Write-Host "Deleting the generated .nupkg file..."
+Remove-Item $nupkgFileName
+
 # Clean up the temporary .nuspec file
 Write-Host "Cleaning up the temporary .nuspec file..."
 Remove-Item $tempNupkgFile
