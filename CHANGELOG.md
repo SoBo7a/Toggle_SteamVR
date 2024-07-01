@@ -1,3 +1,7 @@
+## v1.2.1
+- added a feature that alerts the user if the configured SteamVR folder does not exist
+
+
 ## v1.2.0
 - added auto disable function
 - code refactoring

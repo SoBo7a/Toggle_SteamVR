@@ -1,7 +1,3 @@
-using System;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
 namespace Toggle_SteamVR.src
 {
     internal static class Program
@@ -29,6 +25,13 @@ namespace Toggle_SteamVR.src
             if (IsRunningFromInstalledLocation() && autoUpdateEnabled)
             {
                 await Updater.CheckAndUpdate();
+            }
+
+            // Check if SteamVR path exists
+            if (!ConfigurationManager.SteamVRFolderExists())
+            {
+                SettingsForm settingsForm = new SettingsForm();
+                settingsForm.ShowDialog();
             }
 
             ApplicationConfiguration.Initialize();

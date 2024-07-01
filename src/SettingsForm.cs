@@ -1,5 +1,4 @@
 ﻿using Toggle_SteamVR.src;
-using System.Xml.Linq;
 using System.Diagnostics;
 using System.Reflection;
 
@@ -38,6 +37,11 @@ namespace Toggle_SteamVR
             ConfigurationManager.SaveConfiguration(steamVRPath, autoUpdateEnabled, startWithWindows);
 
             ConfigurationManager.LoadConfiguration();
+
+            if (!ConfigurationManager.SteamVRFolderExists())
+            {
+                return;
+            }
 
             MessageBox.Show("Configuration saved successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.Close();

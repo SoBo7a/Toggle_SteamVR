@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.IO;
-using System.Windows.Forms;
-using System.Xml.Linq;
+﻿using System.Xml.Linq;
 
 namespace Toggle_SteamVR.src
 {
@@ -74,6 +71,30 @@ namespace Toggle_SteamVR.src
             {
                 MessageBox.Show($"An error occurred while saving the configuration: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        public static bool SteamVRFolderExists()
+        {
+            // Check if the SteamVR folder exists
+            if (Directory.Exists(steamVRPath))
+            {
+                return true;
+            }
+
+            // Check if the SteamVR folder with the " - Disabled" suffix exists
+            string disabledSteamVRPath = steamVRPath + " - Disabled";
+            if (Directory.Exists(disabledSteamVRPath))
+            {
+                return true;
+            }
+
+            MessageBox.Show(
+                "The SteamVR installation path could not be found. Please check your settings and ensure the correct path is set for SteamVR. If SteamVR is installed but currently disabled, make sure the path reflects the current directory name.",
+                "SteamVR Path Not Found",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Warning
+            );
+            return false;
         }
 
         private static void UpdateAutoStartRegistry(bool enable)
