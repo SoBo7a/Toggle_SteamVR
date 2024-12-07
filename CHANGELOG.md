@@ -1,3 +1,6 @@
+## v1.2.2
+- automatically re-enable SteamVR when Steam launches to prevent redownloading of SteamVR
+
 ## v1.2.1
 - added a feature that alerts the user if the configured SteamVR folder does not exist
 

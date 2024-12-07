@@ -9,6 +9,7 @@ namespace Toggle_SteamVR
         private Icon enabledIcon;
         private Icon disabledIcon;
         private string steamVRPath;
+        private string disabledSteamVRPath;
         private System.Windows.Forms.Timer checkProcessTimer;
         private bool isLockedState;
 
@@ -18,6 +19,7 @@ namespace Toggle_SteamVR
             LoadIcons();
             ConfigurationManager.LoadConfiguration();
             steamVRPath = ConfigurationManager.SteamVRPath;
+            disabledSteamVRPath = steamVRPath + " - Disabled";
             InitializeTimer();
         }
 
@@ -113,8 +115,6 @@ namespace Toggle_SteamVR
 
         private void UpdateMenuItems()
         {
-            string disabledSteamVRPath = steamVRPath + " - Disabled";
-
             enableMenuItem.Checked = Directory.Exists(steamVRPath);
             disableMenuItem.Checked = Directory.Exists(disabledSteamVRPath);
 
@@ -153,6 +153,14 @@ namespace Toggle_SteamVR
             var runningProcesses = Process.GetProcesses().Select(p => p.ProcessName).ToList();
 
             bool shouldDisable = disableApps.Any(app => runningProcesses.Contains(app, StringComparer.OrdinalIgnoreCase));
+            bool isSteamRunning = runningProcesses.Contains("Steam", StringComparer.OrdinalIgnoreCase);
+
+            if (isSteamRunning && Directory.Exists(disabledSteamVRPath))
+            {
+                ToggleSteamVR(true);
+                notifyIcon1.ShowBalloonTip(500, "Steam Detected", "SteamVR has been re-enabled because Steam is running.", ToolTipIcon.Info);
+                return;
+            }
 
             if (shouldDisable && Directory.Exists(steamVRPath))
             {
